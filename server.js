@@ -2,6 +2,7 @@
 //npm packages
 const express = require("express");
 const mongoose = require("mongoose");
+const expressHandlebars = require("express-handlebars");
 
 //port
 let PORT = process.env.PORT || 3000;
@@ -29,9 +30,20 @@ app.set("view engine", "handlebars");
 app.use(router);
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
 
-//How do I connect to mongoose?
+//or this way??
+// let db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines"
+
+// mongoose.connect(db, function (err){
+//     if(err){
+//         console.log(error);
+//     }
+//     else{
+//         console.log("mongoose connection successful")
+//     }
+// });
+
 
 //listen on port
 app.listen(PORT, () =>{

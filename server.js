@@ -13,6 +13,9 @@ let app = express();
 //set up express router
 let router = express.Router();
 
+//require routes file
+require("./config/routes")(router);
+
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -32,17 +35,17 @@ app.use(router);
 // Connect to the Mongo DB
 // mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
 
-//or this way??
-// let db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines"
 
-// mongoose.connect(db, function (err){
-//     if(err){
-//         console.log(error);
-//     }
-//     else{
-//         console.log("mongoose connection successful")
-//     }
-// });
+let db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines"
+
+mongoose.connect(db, function (err){
+    if(err){
+        console.log(error);
+    }
+    else{
+        console.log("mongoose connection successful")
+    }
+});
 
 
 //listen on port

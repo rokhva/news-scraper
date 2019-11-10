@@ -17,9 +17,9 @@ let scrape = function(callBack){
             let summary = $(this).children(".summary").text().trim();
 
             if (header && summary){
-                let neatHeader = header.replace(/(\r\n|\n|/r|/t|\s+)/gm, " ").trim();
+                let neatHeader = header.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
 
-                let neatSummary = summary.replace(/(\r\n|\n|/r|/t|\s+)/gm, " ").trim();
+                let neatSummary = summary.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
 
                 let dataToAdd = {
                     headline: neatHeader,

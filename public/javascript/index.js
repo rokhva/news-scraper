@@ -34,4 +34,36 @@ $(document).ready(function() {
     );
     articleContainer.append(emptyAlert);
   }
+
+  function renderArticles(articles) {
+    let articlePanels = [];
+
+    articles.forEach(article => {
+      articlePanels.push(article);
+    });
+    articleContainer.append(articlePanels);
+  }
+
+  function createPanel(article) {
+    let panel = $(
+      [
+        "<div class= 'panel panel-default'>",
+        "<div class= 'panel-heading'>",
+        "<h3>",
+        article.headline,
+        "<a class= 'btn btn-success save'>",
+        "Save Article",
+        "<a/>",
+        "</h3>",
+        "</div>",
+        "<div class= 'panel-body'>",
+        article.summary,
+        "</div>",
+        "</div>"
+      ].join("")
+    );
+
+    panel.data("_id", article._id);
+    return panel;
+  }
 });

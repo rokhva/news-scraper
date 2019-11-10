@@ -19,10 +19,27 @@ module.exports = {
             })
 
             Headline.collection.insertMany(articles, {ordered:false}, function(err, docs){
-                cd(err, docs);
+                callback(err, docs);
             });
 
         });
     },
+    delete: function(query, cb){
+        Headline.remove(query, cb);
+    },
+    get: function(query, callback){
+        Headline.find(query)
+        .sort({
+            _id:-1
+        })
+        .exec(function(err, doc){
+            callback(doc);
+        })
+    },
+    update: function(query, callback){
+        Headline.update({_id: query.id}, {
+            $set: query
+        }, {}, callback);
+    }
     
 }

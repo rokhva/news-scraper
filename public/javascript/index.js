@@ -66,4 +66,29 @@ $(document).ready(function() {
     panel.data("_id", article._id);
     return panel;
   }
+
+  function handleArticleSave(){
+      let articleToSave = $(this).parents(".panel").data();
+      articleToSave.saved = true;
+
+      $.ajax({
+          method: "PATCH",
+          url: "/api/headlines",
+          data: articleToSave
+      })
+      .then(function(data){
+          if(data.ok){
+              initPage();
+          }
+      });
+  }
+
+  function handleArticleScrape(){
+
+    $.get("/api/fetch")
+    .then(function(data){
+        initPage();
+        bootbox.alert("<h3 class = 'text-center m-top-80'>" + data.message + "</h3>");
+    });
+  }
 });

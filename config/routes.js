@@ -14,7 +14,7 @@ module.exports = router => {
     res.render("saved");
   });
 
-  router.get("api/fetch", function(req, res) {
+  router.get("/api/fetch", function(req, res) {
     headlinesController.fetch(function(err, docs) {
       if (!docs || docs.insertedCount === 0) {
         res.json({

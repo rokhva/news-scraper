@@ -6,14 +6,13 @@ let Schema = mongoose.Schema;
 let noteSchema = new Schema ({
 
     _headlineId:{
-        type: String,
-        required: Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref:"Headline",
     },
     date: String,
     noteText: String
 });
 
-let Note = mongoose.model("Headline", noteSchema);
+let Note = mongoose.model("Note", noteSchema);
 
 module.exports = Note;

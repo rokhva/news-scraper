@@ -47,7 +47,6 @@ mongoose.connect(db, function (err){
     }
 });
 
-
 //listen on port
 app.listen(PORT, () =>{
     console.log(`listening on port ${PORT}`);
